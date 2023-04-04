@@ -10,8 +10,20 @@ SRC = $(wildcard src/*.c) $(wildcard src/**.c)
 OBJ = $(SRC:.c=.o)
 BIN = bin
 
+all: libs game
+
 game: $(OBJ)
 	$(CC) -o $(BIN)/game $^ $(LDFLAGS)
+
+libs:
+	mkdir lib/SDL/build
+	cd lib/SDL/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . --config Release --parallel
+
+clean_libs:
+	/bin/rm -rf lib/SDL/build
+
+clean:
+	/bin/rm -rf $(BIN) $(OBJ)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)

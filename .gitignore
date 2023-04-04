@@ -3,3 +3,5 @@
 
 # Misc.
 .DS_STORE
+
+.bin/*
