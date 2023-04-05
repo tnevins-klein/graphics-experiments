@@ -1,4 +1,4 @@
-CC = gcc
+CC = g++
 CFLAGS = -g -Wall -Wextra -Wpedantic -Wstrict-aliasing 
 CFLAGS += -framework OpenGL -framework IOKit -framework CoreVideo -framework Cocoa
 CFLAGS += -Wno-pointer-arith -Wno-newline-eof -Wno-unused-parameter -Wno-gnu-statement-expression
@@ -6,14 +6,14 @@ CFLAGS += -Wno-gnu-compound-literal-initializer -Wno-gnu-zero-variadic-macro-arg
 CFLAGS += -Ilib/SDL/include
 LDFLAGS = lib/SDL/build/libSDL3.1.0.0.dylib -Wl,-rpath,lib/SDL/build,-rpath,.
 
-SRC = $(wildcard src/*.c) $(wildcard src/**.c)
+SRC = $(wildcard src/*.cpp) $(wildcard src/**.cpp)
 OBJ = $(SRC:.c=.o)
 BIN = bin
 
 all: libs game
 
 game: $(OBJ)
-	$(CC) -o $(BIN)/game $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(BIN)/game $^ $(LDFLAGS)
 
 libs:
 	mkdir lib/SDL/build

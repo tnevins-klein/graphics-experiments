@@ -7,7 +7,7 @@ If you're crazy enough to try to get this working, you'll need decently modern `
 git clone https://github.com/tnevins-klein/graphics-experiments
 cd graphics-experiments
 make libs
-make
+make game
 ```
 Then, to run the program, run
 ```
